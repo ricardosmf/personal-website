@@ -11,16 +11,31 @@ const profile: Profile = {
 };
 
 const links: SocialLinkType[] = [
-    { name: 'bluesky', url: 'https://bsky.app/profile/ricardosmf.me', color: 'bg-blue-400' },
-    { name: 'github', url: 'https://github.com/ricardosmf', color: 'bg-gray-800' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/ricardosmf/', color: 'bg-blue-600' }
+    {
+        name: 'bluesky',
+        url: 'https://bsky.app/profile/ricardosmf.me',
+        bgColor: 'bg-sky-500',
+        hoverColor: 'hover:bg-sky-600'
+    },
+    {
+        name: 'gitjub',
+        url: 'https://github.com/ricardosmf',
+        bgColor: 'bg-gray-800',
+        hoverColor: 'bg-gray-900'
+    },
+    {
+        name: 'linkedin',
+        url: 'https://www.linkedin.com/in/ricardosmf/',
+        bgColor: 'bg-indigo-600',
+        hoverColor: 'bg-indigo-600'
+    }
 ];
 ---
 
 <Layout title={`personal website`}>
-    <main class='bg-white rounded-lg shadow-xl p-8 max-w-md w-full'>
+    <main class='bg-gray-800 p-6 rounded-lg max-w-md w-full border border-gray-700'>
         <ProfileCard {...profile} />
-        <div class='space-y-4'>
+        <div class='space-y-3'>
             {links.map((link) => <SocialLink {...link} />)}
         </div>
     </main>

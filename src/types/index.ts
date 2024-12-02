@@ -1,7 +1,8 @@
 export interface SocialLink {
     name: string;
     url: string;
-    color: string;
+    bgColor: string;
+    hoverColor: string;
 }
 
 export interface Profile {
