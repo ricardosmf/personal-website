@@ -1,21 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+import SocialLink from '../components/SocialLink.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import type { SocialLink as SocialLinkType, Profile } from '../types';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
+const profile: Profile = {
+    name: 'Ricardo',
+    username: 'ricardosmf.me',
+    image: '/profile.jpg'
+};
 
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const links: SocialLinkType[] = [
+    { name: 'bluesky', url: 'https://bsky.app/profile/ricardosmf.me', color: 'bg-blue-400' },
+    { name: 'github', url: 'https://github.com/ricardosmf', color: 'bg-gray-800' },
+    { name: 'linkedin', url: 'https://www.linkedin.com/in/ricardosmf/', color: 'bg-blue-600' }
+];
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-4" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="text-lg mb-10" />
-    <p class="mb-8">
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg btn-primary sm:btn-wide">Read the Docs</a>
-    </p>
+<Layout title={`personal website`}>
+    <main class='bg-white rounded-lg shadow-xl p-8 max-w-md w-full'>
+        <ProfileCard {...profile} />
+        <div class='space-y-4'>
+            {links.map((link) => <SocialLink {...link} />)}
+        </div>
+    </main>
 </Layout>
